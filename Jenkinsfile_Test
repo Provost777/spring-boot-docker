@@ -5,10 +5,17 @@ pipeline {
     jdk 'jdk1.8'
   }
   environment {
-		DOCKERHUB_CREDENTIALS=credentials('dockerhub-glofex')
-	}
+		
+	DOCKERHUB_CREDENTIALS=credentials('dockerhub-glofex')
+ }
 	
   stages {
+  
+    stage("checkout"){
+	steps{
+		checkout scm
+	   }
+    }
   
     stage("Maven Build"){
       steps{
