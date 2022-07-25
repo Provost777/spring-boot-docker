@@ -19,17 +19,17 @@ pipeline {
     
     stage("Docker Build"){
       steps{
-        sh "docker build -t josiokoko/spring-boot-mongo ."
+        sh "docker build -t glofex/spring-boot-mongo ."
       }
     }
     
     stage("Push Image to Registry"){
       steps{
-	sh "docker tag josiokoko/spring-boot-mongo josiokoko/java-provost:${currentBuild.number}"
+	sh "docker tag glofex/spring-boot-mongo glofex/java-provost:${currentBuild.number}"
         sh 'echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin'
 	
 	echo 'Login Completed'
-        sh "docker push josiokoko/java-provost:${currentBuild.number}"
+        sh "docker push glofex/java-provost:${currentBuild.number}"
       }
     }
    
