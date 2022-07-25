@@ -1,11 +1,11 @@
 pipeline {
   
-   agent { docker 'maven:3.8.1-adoptopenjdk-11' }
+   agent none
        
       stages {
       
         stage('Build') {
-            
+          agent { docker 'maven:3.8.1-adoptopenjdk-11' }
           steps {
             sh 'mvn --version'
             sh 'mvn clean install'
